@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:space_app/screens/home/classes/articles/article_card.dart';
