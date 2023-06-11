@@ -6,7 +6,6 @@ version: 1.0.0+1
 environment:
   sdk: ">=3.0.2 <4.0.0"
 dependencies:
-  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
