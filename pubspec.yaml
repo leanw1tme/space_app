@@ -12,6 +12,8 @@ dependencies:
   flutter_svg: ^2.0.6
   google_fonts: ^4.0.4
   rive: ^0.11.2
+  salomon_bottom_bar: ^3.3.2
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

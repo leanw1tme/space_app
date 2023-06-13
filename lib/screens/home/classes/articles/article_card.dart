@@ -73,7 +73,7 @@ class ArticleCard extends StatelessWidget {
     return Positioned(
       width: cardWidth,
       height: cardHeight + 60,
-      bottom: 130,
+      bottom: 65,
       left: size.width - 225,
       child: Container(
           child: Stack(
