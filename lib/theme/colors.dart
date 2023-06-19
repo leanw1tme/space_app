@@ -3,13 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-Color EarthBack = HexColor("#B6F3FF");
-Color EarthButton = const Color.fromARGB(255, 0, 238, 255);
-Color VenusBack = const Color.fromARGB(255, 245, 228, 190);
-Color VenusButton = const Color.fromARGB(255, 255, 174, 0);
+Color EarthBack = HexColor("B6F3FF");
+Color GreyB = HexColor('565656');
+Color EarthButton = HexColor('1D99B5');
+Color VenusBack = HexColor('F6E3C4');
+Color VenusButton = HexColor('D6711E');
 Color MarsBack = const Color.fromARGB(255, 255, 187, 173);
 Color MarsButton = const Color.fromARGB(255, 255, 25, 0);
-Color SaturnBack = const Color.fromARGB(255, 232, 190, 245);
-Color SaturnButton = const Color.fromARGB(255, 136, 0, 255);
-Color DarkGreyT = const Color.fromARGB(147, 30, 30, 30);
-Color DarkGreyB = const Color.fromARGB(255, 26, 26, 26);
+Color UranusBack = HexColor('DCC7FF');
+Color UranusButton = HexColor('633BC8');
+Color LightGrey = HexColor('B8B8B8');
+Color DarkGreyB = HexColor('161616');
+Color GreyPanel = HexColor('696969');
+Color BackPanel = HexColor('171717');
+Color GreyText = HexColor('353535');
+Color ArticleDes = HexColor('BBBBBB');
+Color ArticleDate = HexColor('787878');

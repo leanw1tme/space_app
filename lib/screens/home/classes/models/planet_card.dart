@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:space_app/screens/home/view/model_screen.dart';
+import 'package:space_app/theme/colors.dart';
 
 import 'planets_list.dart';
 
@@ -31,7 +33,7 @@ class PlanetCard extends StatelessWidget {
     return Positioned(
       width: cardWidth,
       height: cardHeight,
-      top: cardHeight / .97,
+      top: cardHeight - 140,
       left: size.width - 335,
       child: Container(
         decoration: ShapeDecoration(
@@ -46,10 +48,10 @@ class PlanetCard extends StatelessWidget {
     return Positioned(
       width: cardWidth + 20,
       height: cardHeight + 20,
-      top: size.height - 670,
+      top: cardHeight - 250,
       left: size.width - 370,
       child: Container(
-        child: RiveAnimation.asset(planets.image),
+        child: RiveAnimation.asset(planets.aniImage),
       ),
     );
   }
@@ -58,7 +60,7 @@ class PlanetCard extends StatelessWidget {
     return Positioned(
       width: cardWidth,
       height: cardHeight,
-      top: cardHeight / .99,
+      top: cardHeight - 140,
       left: size.width - 335,
       child: Container(
           child: Stack(
@@ -82,8 +84,8 @@ class PlanetCard extends StatelessWidget {
             left: 10,
             right: 14,
             child: Text(planets.description,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: GreyText,
                   fontSize: 10,
                   fontWeight: FontWeight.w500,
                 )),
@@ -98,7 +100,7 @@ class PlanetCard extends StatelessWidget {
     return Positioned(
         width: cardWidth - 120,
         height: cardHeight,
-        top: cardHeight / .66,
+        top: cardHeight - 40,
         left: size.width - 275,
         child: SizedBox(
           width: 50,
@@ -107,7 +109,11 @@ class PlanetCard extends StatelessWidget {
               backgroundColor: planets.buttonColor,
               foregroundColor: Colors.white,
               child: IconButton(
-                  onPressed: () => Navigator.pushNamed(context, planets.route),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ModelPage(planets),
+                      )),
                   icon: Icon(Icons.arrow_forward))),
         ));
   }
@@ -120,7 +126,7 @@ class PlanetCard extends StatelessWidget {
     return Positioned(
         width: cardWidth - 117,
         height: cardHeight,
-        top: cardHeight / .66,
+        top: cardHeight - 40,
         left: size.width - 276.5,
         child: const SizedBox(
             width: 50,

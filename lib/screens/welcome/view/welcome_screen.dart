@@ -37,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
             width: 174,
             height: 47,
             child: FilledButton(
-              onPressed: () => Navigator.pushNamed(context, '/home'),
+              onPressed: () => Navigator.popAndPushNamed(context, '/home'),
               style: ButtonStyle(
                 backgroundColor: const MaterialStatePropertyAll(Colors.white),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(

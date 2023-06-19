@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:space_app/theme/colors.dart';
 
 import 'article_list.dart';
 
@@ -97,8 +98,8 @@ class ArticleCard extends StatelessWidget {
             left: 9,
             right: 80,
             child: Text(articles.description,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: ArticleDes,
                   fontSize: 10,
                 )),
           ),
@@ -107,8 +108,8 @@ class ArticleCard extends StatelessWidget {
             left: 9,
             right: 70,
             child: Text(articles.date,
-                style: const TextStyle(
-                  color: Colors.grey,
+                style: TextStyle(
+                  color: ArticleDate,
                   fontSize: 10,
                 )),
           ),

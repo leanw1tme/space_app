@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
         bottomNavigationBar: Container(
           decoration: ShapeDecoration(
-              color: DarkGreyB,
+              color: BackPanel,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
                       bottomRight: Radius.zero))),
           child: SalomonBottomBar(
             backgroundColor: Colors.transparent,
-            unselectedItemColor: Colors.white70,
+            unselectedItemColor: GreyPanel,
             margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
             currentIndex: _currentIndex,
             onTap: (i) {
@@ -57,23 +57,22 @@ class _MainScreenState extends State<MainScreen> {
                 selectedColor: Colors.blueAccent,
               ),
 
-              /// Likes
-              SalomonBottomBarItem(
-                icon: const Icon(Icons.favorite_border),
-                title: const Text("Likes"),
-                selectedColor: Colors.pink,
-              ),
-
               /// Search
               SalomonBottomBarItem(
                 icon: const Icon(Icons.search),
                 title: const Text("Search"),
                 selectedColor: Colors.orange,
               ),
+
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.favorite_border),
+                title: const Text("Likes"),
+                selectedColor: Colors.pink,
+              ),
             ],
           ),
         ),
-        backgroundColor: Color.fromARGB(55, 63, 63, 80),
+        backgroundColor: BackPanel,
         body: screens[_currentIndex]);
   }
 }

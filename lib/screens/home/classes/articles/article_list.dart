@@ -20,18 +20,18 @@ List<Articles> getArticles() {
   listArticles.add(Articles(
       'Ice giant - Uranus',
       'By Louise Stark | 12 May 2023',
-      'assets/img/Saturn.svg',
+      'assets/img/Uranus.svg',
       'Uranus is a fascinating planet that is often overlooked due to its distance from Earth and lack of visible features.',
-      SaturnBack,
-      SaturnButton,
+      UranusBack,
+      UranusButton,
       '/home'));
   listArticles.add(Articles(
       'Ice giant - Uranus',
       'By Louise Stark | 12 May 2023',
-      'assets/img/Saturn.svg',
+      'assets/img/Uranus.svg',
       'Uranus is a fascinating planet that is often overlooked due to its distance from Earth and lack of visible features.',
-      SaturnBack,
-      SaturnButton,
+      UranusBack,
+      UranusButton,
       '/home'));
   return listArticles;
 }
