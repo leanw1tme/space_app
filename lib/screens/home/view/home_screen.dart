@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rive/rive.dart';
 import 'package:space_app/screens/home/classes/articles/article_card.dart';
 import 'package:space_app/screens/home/classes/articles/article_list.dart';
-import 'package:space_app/screens/home/classes/data.dart';
 import 'package:space_app/screens/home/classes/models/planet_card.dart';
 import 'package:space_app/theme/colors.dart';
 

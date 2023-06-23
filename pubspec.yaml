@@ -6,7 +6,6 @@ version: 1.0.0+1
 environment:
   sdk: ">=3.0.2 <4.0.0"
 dependencies:
-  autocomplete_textfield: ^2.0.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
@@ -14,6 +13,7 @@ dependencies:
   flutter_typeahead: ^4.6.1
   google_fonts: ^4.0.4
   hexcolor: ^3.0.1
+  provider: ^6.0.5
   rive: ^0.11.2
   salomon_bottom_bar: ^3.3.2
 

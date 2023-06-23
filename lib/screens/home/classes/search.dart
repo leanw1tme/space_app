@@ -6,7 +6,6 @@ import 'package:space_app/screens/home/view/model_screen.dart';
 import 'package:space_app/theme/colors.dart';
 
 import 'data.dart';
-import 'models/planets_list.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});

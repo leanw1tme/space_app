@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rive/rive.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:space_app/screens/home/view/favorite_screen.dart';
 import 'package:space_app/screens/home/view/home_screen.dart';
-import 'package:space_app/screens/welcome/view/welcome_screen.dart';
 import 'package:space_app/theme/colors.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,7 +16,6 @@ class _MainScreenState extends State<MainScreen> {
   final screens = [
     const HomeScreen(),
     const FavoriteScreen(),
-    const WelcomeScreen()
   ];
 
   @override
@@ -57,15 +54,8 @@ class _MainScreenState extends State<MainScreen> {
                 selectedColor: Colors.blueAccent,
               ),
 
-              /// Search
               SalomonBottomBarItem(
-                icon: const Icon(Icons.search),
-                title: const Text("Search"),
-                selectedColor: Colors.orange,
-              ),
-
-              SalomonBottomBarItem(
-                icon: const Icon(Icons.favorite_border),
+                icon: const Icon(Icons.favorite),
                 title: const Text("Likes"),
                 selectedColor: Colors.pink,
               ),

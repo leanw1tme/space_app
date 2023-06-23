@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+import 'package:space_app/screens/home/classes/favorites/favorite_provider.dart';
 
 import '../../../theme/colors.dart';
 import '../classes/models/planets_list.dart';
@@ -11,6 +13,7 @@ class ModelPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<FavoriteProvider>(context);
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
@@ -62,12 +65,20 @@ class ModelPage extends StatelessWidget {
                         top: 20,
                         right: 20,
                         child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite_border,
-                              size: 30,
-                              color: Colors.pink,
-                            ))),
+                            onPressed: () {
+                              provider.toggleFavorite(model);
+                            },
+                            icon: provider.isExist(model)
+                                ? const Icon(
+                                    Icons.favorite,
+                                    size: 30,
+                                    color: Colors.pink,
+                                  )
+                                : const Icon(
+                                    Icons.favorite_border,
+                                    size: 30,
+                                    color: Colors.pink,
+                                  ))),
                     const Positioned(
                       top: 27,
                       left: 34,
