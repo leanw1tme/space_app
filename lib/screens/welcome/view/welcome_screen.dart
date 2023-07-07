@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
+import 'package:space_app/theme/l10n/app_localization.dart';
 
-class WelcomeScreen extends StatelessWidget {
+import '../../../theme/theme_app.dart';
+
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  StateMachineController? controller;
+  SMIInput<bool>? switchInput;
   @override
   Widget build(BuildContext context) {
+    Locale _locale = Locale('en');
+    bool isEnglish = _locale.languageCode == 'en';
     final theme = Theme.of(context);
     return Stack(
       children: [
@@ -16,6 +30,32 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(
+                AppLocalization.of(context)
+                    .getTranslatedValue("language")
+                    .toString(),
+                style: GoogleFonts.ptSans(textStyle: theme.textTheme.bodyLarge),
+              ),
+              // TextButton(
+              //   child: Text("Set locale to German"),
+              //   onPressed: () => SpaceApp.of(context)
+              //       ?.setLocale(Locale.fromSubtags(languageCode: 'en')),
+              // ),
+              // TextButton(
+              //   child: Text("Set locale to English"),
+              //   onPressed: () => SpaceApp.of(context)
+              //       ?.setLocale(Locale.fromSubtags(languageCode: 'ru')),
+              // ),
+              Material(
+                child: Switch.adaptive(
+                  value: isEnglish,
+                  onChanged: (value) {
+                    SpaceApp.of(context)?.setLocale(isEnglish
+                        ? Locale.fromSubtags(languageCode: 'en')
+                        : Locale.fromSubtags(languageCode: 'ru'));
+                  },
+                ),
+              ),
               Text(
                 'Explore the Universe',
                 style: GoogleFonts.ptSans(textStyle: theme.textTheme.bodyLarge),

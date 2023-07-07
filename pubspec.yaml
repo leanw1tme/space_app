@@ -7,8 +7,10 @@ environment:
   sdk: ">=3.0.2 <4.0.0"
 dependencies:
   cupertino_icons: ^1.0.2
+  flare_flutter: ^3.0.2
   flutter:
     sdk: flutter
+  flutter_localization: ^0.1.12
   flutter_svg: ^2.0.6
   flutter_typeahead: ^4.6.1
   google_fonts: ^4.0.4
@@ -29,6 +31,7 @@ flutter:
     - assets/fonts/
     - assets/icons/
     - assets/img/
+    - assets/language/
   # example:
   # fonts:
   #   - family: Schyler

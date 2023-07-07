@@ -19,8 +19,8 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
-      width: 280,
+      height: 45,
+      width: 270,
       child: TypeAheadField(
         noItemsFoundBuilder: (context) => SizedBox(
           height: 50,

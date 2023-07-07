@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rive/rive.dart';
 import 'package:space_app/screens/home/classes/articles/article_card.dart';
 import 'package:space_app/screens/home/classes/articles/article_list.dart';
 import 'package:space_app/screens/home/classes/models/planet_card.dart';
 import 'package:space_app/theme/colors.dart';
 
+import '../../../theme/theme_app.dart';
 import '../classes/models/planets_list.dart';
 import '../classes/search.dart';
 
@@ -16,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  StateMachineController? controller;
+  SMIInput<bool>? switchInput;
   final List<String> categories = [
     'Planets',
     'Stars',
@@ -39,11 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             Positioned(
                 top: 0, child: SvgPicture.asset('assets/img/backHome.svg')),
-            Padding(
+            const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 55),
                 child: Search()),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 105),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 105),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: categories
@@ -70,6 +75,37 @@ class _HomeScreenState extends State<HomeScreen> {
                           }))
                       .toList(),
                 )),
+            Padding(
+              padding: const EdgeInsets.only(top: 42, left: 284),
+              child: InkWell(
+                onTap: () {
+                  if (switchInput == null) return;
+                  // ignore: non_constant_identifier_names
+                  final IsON = switchInput?.value ?? false;
+
+                  SpaceApp.of(context)?.setLocale(switchInput?.value == true
+                      ? const Locale.fromSubtags(languageCode: 'ru')
+                      : const Locale.fromSubtags(languageCode: 'en'));
+
+                  switchInput?.change(!IsON);
+                },
+                borderRadius: BorderRadius.circular(150),
+                child: SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: RiveAnimation.asset('assets/ani/riv/switch_button.riv',
+                      stateMachines: ["Switch Machine"], onInit: (artboard) {
+                    controller = StateMachineController.fromArtboard(
+                        artboard, "Switch Machine");
+
+                    if (controller == null) return;
+                    artboard.addController(controller!);
+                    switchInput = controller?.findInput("IsON");
+                    switchInput?.change(true);
+                  }),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 175),
               child: Container(

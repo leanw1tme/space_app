@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:space_app/screens/home/classes/favorites/favorite_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../router/router.dart';
+import 'l10n/app_localization.dart';
 
-class SpaceApp extends StatelessWidget {
+class SpaceApp extends StatefulWidget {
   const SpaceApp({super.key});
+
+  @override
+  State<SpaceApp> createState() => _SpaceAppState();
+
+  static _SpaceAppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_SpaceAppState>();
+}
+
+class _SpaceAppState extends State<SpaceApp> {
+  Locale _locale = Locale('en');
+
+  void setLocale(Locale value) {
+    setState(() {
+      _locale = value;
+    });
+  }
 
   // This widget is the root of your application.
   @override
@@ -13,6 +31,7 @@ class SpaceApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => FavoriteProvider(),
       child: MaterialApp(
+        locale: _locale,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -29,6 +48,16 @@ class SpaceApp extends StatelessWidget {
               ),
             )),
         routes: routes,
+        supportedLocales: [
+          Locale('en'),
+          Locale('ru'),
+        ],
+        localizationsDelegates: [
+          AppLocalization.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
       ),
     );
   }
