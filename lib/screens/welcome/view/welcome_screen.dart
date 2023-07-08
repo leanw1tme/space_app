@@ -19,7 +19,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     Locale _locale = Locale('en');
-    bool isEnglish = _locale.languageCode == 'en';
     final theme = Theme.of(context);
     return Stack(
       children: [
