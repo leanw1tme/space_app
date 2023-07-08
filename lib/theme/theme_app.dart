@@ -32,22 +32,22 @@ class _SpaceAppState extends State<SpaceApp> {
     return ChangeNotifierProvider(
       create: (context) => FavoriteProvider(),
       child: ScreenUtilInit(
-        designSize: const Size(720, 1560),
+        designSize: const Size(393, 852),
         builder: (context, child) => MaterialApp(
           locale: _locale,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
-              textTheme: const TextTheme(
+              textTheme: TextTheme(
                 bodyLarge: TextStyle(
                     color: Colors.white,
-                    fontSize: 45,
+                    fontSize: 45.sp,
                     fontWeight: FontWeight.w600,
                     height: BorderSide.strokeAlignCenter),
                 bodySmall: TextStyle(
                   color: Colors.white70,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               )),
           routes: routes,

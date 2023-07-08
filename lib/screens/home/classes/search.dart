@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,17 +20,17 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45,
-      width: 270,
+      height: 48.h,
+      width: 291.w,
       child: TypeAheadField(
         noItemsFoundBuilder: (context) => SizedBox(
-          height: 50,
+          height: 50.h,
           child: Container(
             color: DarkGreyB,
             child: Center(
               child: Text(
                 'No items found',
-                style: TextStyle(color: LightGrey, fontSize: 15),
+                style: TextStyle(color: LightGrey, fontSize: 15.sp),
               ),
             ),
           ),
@@ -37,7 +38,6 @@ class _SearchState extends State<Search> {
         suggestionsBoxDecoration: SuggestionsBoxDecoration(
           color: Colors.transparent,
           clipBehavior: Clip.antiAlias,
-          elevation: 0,
         ),
         textFieldConfiguration: TextFieldConfiguration(
           controller: _typeAheadController,
@@ -45,25 +45,27 @@ class _SearchState extends State<Search> {
             hintText: 'Search for planets and stars',
             hintStyle: GoogleFonts.ptSans(
               textStyle: TextStyle(
-                  color: LightGrey, fontSize: 16, fontWeight: FontWeight.w600),
+                  color: LightGrey,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600),
             ),
             prefixIconColor: LightGrey,
             prefixIcon: const Icon(Icons.search),
             fillColor: DarkGreyB,
             filled: true,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
             ),
             focusColor: Colors.white,
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(12)),
           ),
-          style: const TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 18.sp),
           textAlignVertical: TextAlignVertical.bottom,
           autofocus: false,
         ),
@@ -76,14 +78,14 @@ class _SearchState extends State<Search> {
         },
         itemBuilder: (context, suggestion) {
           return ListTile(
-            contentPadding: EdgeInsets.only(right: 50, left: 5),
-            minVerticalPadding: 15,
+            contentPadding: EdgeInsets.only(right: 50.w, left: 5.w),
+            minVerticalPadding: 15.h,
             visualDensity: VisualDensity.compact,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.r)),
             leading: SizedBox(
-              width: 50,
-              height: 50,
+              width: 50.w,
+              height: 50.h,
               child: SvgPicture.asset(
                 suggestion["image"],
                 fit: BoxFit.cover,
@@ -92,7 +94,9 @@ class _SearchState extends State<Search> {
             title: Text(
               suggestion["name"],
               style: TextStyle(
-                  color: GreyText, fontSize: 15, fontWeight: FontWeight.w500),
+                  color: GreyText,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w500),
             ),
             tileColor: suggestion["color"],
           );
@@ -107,7 +111,7 @@ class _SearchState extends State<Search> {
         errorBuilder: (context, error) => Text('$error',
             style: TextStyle(
                 color: Colors.redAccent,
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w500)),
       ),
     );

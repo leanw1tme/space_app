@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rive/rive.dart';
 import 'package:space_app/screens/home/classes/articles/article_card.dart';
@@ -34,114 +35,110 @@ class _HomeScreenState extends State<HomeScreen> {
       return selectedCategories.isEmpty ||
           selectedCategories.contains(model.category);
     }).toList();
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: <Widget>[
-            Positioned(
-                top: 0, child: SvgPicture.asset('assets/img/backHome.svg')),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 55),
-                child: Search()),
-            Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 105),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: categories
-                      .map((category) => FilterChip(
-                          selectedColor: Colors.white,
-                          labelStyle: TextStyle(
-                            color: GreyB,
-                          ),
-                          backgroundColor: DarkGreyB,
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(color: GreyB),
-                              borderRadius: BorderRadius.circular(10)),
-                          showCheckmark: false,
-                          selected: selectedCategories.contains(category),
-                          label: Text(category),
-                          onSelected: (selected) {
-                            setState(() {
-                              if (selected) {
-                                selectedCategories.add(category);
-                              } else {
-                                selectedCategories.remove(category);
-                              }
-                            });
-                          }))
-                      .toList(),
-                )),
-            Padding(
-              padding: const EdgeInsets.only(top: 42, left: 284),
-              child: InkWell(
-                onTap: () {
-                  if (switchInput == null) return;
-                  // ignore: non_constant_identifier_names
-                  final IsON = switchInput?.value ?? false;
+      body: Stack(
+        clipBehavior: Clip.none,
+        children: <Widget>[
+          Positioned(
+              top: 0.h, child: SvgPicture.asset('assets/img/backHome.svg')),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 55.h),
+              child: Search()),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 117.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: categories
+                    .map((category) => FilterChip(
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
+                        selectedColor: Colors.white,
+                        labelStyle: TextStyle(
+                          color: GreyB,
+                        ),
+                        backgroundColor: DarkGreyB,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(color: GreyB),
+                            borderRadius: BorderRadius.circular(10.r)),
+                        showCheckmark: false,
+                        selected: selectedCategories.contains(category),
+                        label: Text(category),
+                        onSelected: (selected) {
+                          setState(() {
+                            if (selected) {
+                              selectedCategories.add(category);
+                            } else {
+                              selectedCategories.remove(category);
+                            }
+                          });
+                        }))
+                    .toList(),
+              )),
+          Padding(
+            padding: EdgeInsets.only(top: 45.h, left: 313.w),
+            child: InkWell(
+              onTap: () {
+                if (switchInput == null) return;
+                // ignore: non_constant_identifier_names
+                final IsON = switchInput?.value ?? false;
 
-                  SpaceApp.of(context)?.setLocale(switchInput?.value == true
-                      ? const Locale.fromSubtags(languageCode: 'ru')
-                      : const Locale.fromSubtags(languageCode: 'en'));
+                SpaceApp.of(context)?.setLocale(switchInput?.value == true
+                    ? const Locale.fromSubtags(languageCode: 'ru')
+                    : const Locale.fromSubtags(languageCode: 'en'));
 
-                  switchInput?.change(!IsON);
-                },
-                borderRadius: BorderRadius.circular(150),
-                child: SizedBox(
-                  height: 70,
-                  width: 70,
-                  child: RiveAnimation.asset('assets/ani/riv/switch_button.riv',
-                      stateMachines: ["Switch Machine"], onInit: (artboard) {
-                    controller = StateMachineController.fromArtboard(
-                        artboard, "Switch Machine");
+                switchInput?.change(!IsON);
+              },
+              borderRadius: BorderRadius.circular(150.r),
+              child: SizedBox(
+                height: 70.h,
+                width: 70.w,
+                child: RiveAnimation.asset('assets/ani/riv/switch_button.riv',
+                    stateMachines: const ["Switch Machine"],
+                    onInit: (artboard) {
+                  controller = StateMachineController.fromArtboard(
+                      artboard, "Switch Machine");
 
-                    if (controller == null) return;
-                    artboard.addController(controller!);
-                    switchInput = controller?.findInput("IsON");
-                    switchInput?.change(true);
-                  }),
-                ),
+                  if (controller == null) return;
+                  artboard.addController(controller!);
+                  switchInput = controller?.findInput("IsON");
+                  switchInput?.change(true);
+                }),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 175),
-              child: Container(
-                child: PageView.builder(
-                  controller: PageController(viewportFraction: 0.52),
-                  itemCount: filterModels.length,
-                  itemBuilder: (context, index) {
-                    final model = filterModels[index];
-                    return PlanetCard(model);
-                  },
-                  padEnds: false,
-                ),
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 180.h),
+            child: PageView.builder(
+              controller: PageController(viewportFraction: 0.57.w),
+              itemCount: filterModels.length,
+              itemBuilder: (context, index) {
+                final model = filterModels[index];
+                return PlanetCard(model);
+              },
+              padEnds: false,
             ),
-            const Positioned(
-                top: 475,
-                left: 25,
-                child: Text(
-                  'Articles',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600),
-                )),
-            ArticlesSlider(size)
-          ],
-        ),
+          ),
+          Positioned(
+              top: 537.h,
+              left: 25.w,
+              child: Text(
+                'Articles',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600),
+              )),
+          ArticlesSlider()
+        ],
       ),
     );
   }
 
-  Widget ArticlesSlider(Size size) {
+  Widget ArticlesSlider() {
     // ignore: avoid_unnecessary_containers
     return Container(
-      height: 400,
-      margin: const EdgeInsets.only(top: 515),
+      height: 400.h,
+      margin: EdgeInsets.only(top: 582.h),
       child: PageView.builder(
         itemCount: getArticles().length,
         itemBuilder: (context, index) => ArticleCard(getArticles()[index]),

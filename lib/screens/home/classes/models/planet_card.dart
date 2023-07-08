@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
 import 'package:space_app/screens/home/view/model_screen.dart';
 import 'package:space_app/theme/colors.dart';
@@ -12,99 +13,84 @@ class PlanetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double cardWidth = size.width - 200;
-    double cardHeight = size.height * .27;
-    return Container(
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: <Widget>[
-          PlanetShape(size, cardWidth, cardHeight),
-          imagePlanet(size, cardWidth, cardHeight),
-          PlanetTitle(size, cardWidth, cardHeight),
-          backButtonPlanet(size, cardWidth, cardHeight),
-          cardButtonPlanet(size, cardWidth, cardHeight, context: context),
-        ],
-      ),
+    return Stack(
+      clipBehavior: Clip.none,
+      children: <Widget>[
+        PlanetShape(),
+        imagePlanet(),
+        PlanetTitle(),
+        backButtonPlanet(),
+        cardButtonPlanet(context: context),
+      ],
     );
   }
 
-  Widget PlanetShape(Size size, double cardWidth, double cardHeight) {
+  Widget PlanetShape() {
     return Positioned(
-      width: cardWidth,
-      height: cardHeight,
-      top: cardHeight - 140,
-      left: size.width - 335,
+      width: 180.w,
+      height: 226.h,
+      top: 70.h,
+      left: 20.w,
       child: Container(
         decoration: ShapeDecoration(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.r)),
             color: planets.cardColor),
       ),
     );
   }
 
-  Widget imagePlanet(Size size, double cardWidth, double cardHeight) {
+  Widget imagePlanet() {
     return Positioned(
-      width: cardWidth + 20,
-      height: cardHeight + 20,
-      top: cardHeight - 250,
-      left: size.width - 370,
-      child: Container(
-        child: RiveAnimation.asset(planets.aniImage),
-      ),
+      width: 220.w,
+      height: 180.h,
+      right: 23.w,
+      child: RiveAnimation.asset(planets.aniImage),
     );
   }
 
-  Widget PlanetTitle(Size size, double cardWidth, double cardHeight) {
+  Widget PlanetTitle() {
     return Positioned(
-      width: cardWidth,
-      height: cardHeight,
-      top: cardHeight - 140,
-      left: size.width - 335,
-      child: Container(
-          child: Stack(
+      width: 190.w,
+      height: 210.h,
+      top: 80.h,
+      left: 23.w,
+      child: Stack(
         children: [
           Positioned(
-            top: 90,
-            left: 10,
+            top: 90.h,
+            left: 10.w,
             child: Text(
               planets.name,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
           Positioned(
-            top: 120,
-            left: 10,
-            right: 14,
+            top: 120.h,
+            left: 10.w,
+            right: 14.w,
             child: Text(planets.description,
                 style: TextStyle(
                   color: GreyText,
-                  fontSize: 10,
+                  fontSize: 11.sp,
                   fontWeight: FontWeight.w500,
                 )),
           )
         ],
-      )),
+      ),
     );
   }
 
-  Widget cardButtonPlanet(Size size, double cardWidth, double cardHeight,
-      {required BuildContext context}) {
+  Widget cardButtonPlanet({required BuildContext context}) {
     return Positioned(
-        width: cardWidth - 120,
-        height: cardHeight,
-        top: cardHeight - 40,
-        left: size.width - 275,
+        top: 271.5.h,
+        left: 91.5.w,
         child: SizedBox(
-          width: 50,
-          height: 50,
+          width: 42.w,
+          height: 42.h,
           child: CircleAvatar(
               backgroundColor: planets.buttonColor,
               foregroundColor: Colors.white,
@@ -114,24 +100,18 @@ class PlanetCard extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => ModelPage(planets),
                       )),
-                  icon: Icon(Icons.arrow_forward))),
+                  icon: const Icon(Icons.arrow_forward))),
         ));
   }
 
-  Widget backButtonPlanet(
-    Size size,
-    double cardWidth,
-    double cardHeight,
-  ) {
+  Widget backButtonPlanet() {
     return Positioned(
-        width: cardWidth - 117,
-        height: cardHeight,
-        top: cardHeight - 40,
-        left: size.width - 276.5,
-        child: const SizedBox(
-            width: 50,
-            height: 50,
-            child: CircleAvatar(
+        top: 270.h,
+        left: 90.w,
+        child: SizedBox(
+            width: 45.w,
+            height: 45.h,
+            child: const CircleAvatar(
               backgroundColor: Colors.white,
             )));
   }

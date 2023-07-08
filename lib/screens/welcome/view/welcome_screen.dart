@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
@@ -25,7 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         const Positioned.fill(
             child: RiveAnimation.asset('assets/ani/riv/space_planets.riv')),
         Padding(
-          padding: const EdgeInsets.only(top: 105, left: 25, right: 80),
+          padding: EdgeInsets.only(top: 105.h, left: 25.w, right: 80.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -33,8 +34,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 'Explore the Universe',
                 style: GoogleFonts.ptSans(textStyle: theme.textTheme.bodyLarge),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: 12.h,
               ),
               Text(
                 'Journey through the cosmos with our space app',
@@ -44,24 +45,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         Positioned(
-          left: 25,
-          top: 310,
+          left: 25.w,
+          top: 310.h,
           child: SizedBox(
-            width: 174,
-            height: 47,
+            width: 174.w,
+            height: 47.h,
             child: FilledButton(
               onPressed: () => Navigator.popAndPushNamed(context, '/home'),
               style: ButtonStyle(
                 backgroundColor: const MaterialStatePropertyAll(Colors.white),
                 shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12))),
+                    borderRadius: BorderRadius.circular(12.r))),
               ),
-              child: const Text(
+              child: Text(
                 'Get started',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 17),
+                    fontSize: 17.sp),
               ),
             ),
           ),

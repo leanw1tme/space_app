@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:space_app/screens/home/view/favorite_screen.dart';
 import 'package:space_app/screens/home/view/home_screen.dart';
@@ -30,16 +31,16 @@ class _MainScreenState extends State<MainScreen> {
         bottomNavigationBar: Container(
           decoration: ShapeDecoration(
               color: BackPanel,
-              shape: const RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15.r),
+                      topRight: Radius.circular(15.r),
                       bottomLeft: Radius.zero,
                       bottomRight: Radius.zero))),
           child: SalomonBottomBar(
             backgroundColor: Colors.transparent,
             unselectedItemColor: GreyPanel,
-            margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 60.w, vertical: 10.h),
             currentIndex: _currentIndex,
             onTap: (i) {
               setState(() {
