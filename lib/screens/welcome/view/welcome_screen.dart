@@ -31,32 +31,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                AppLocalization.of(context)
-                    .getTranslatedValue("language")
-                    .toString(),
-                style: GoogleFonts.ptSans(textStyle: theme.textTheme.bodyLarge),
-              ),
-              // TextButton(
-              //   child: Text("Set locale to German"),
-              //   onPressed: () => SpaceApp.of(context)
-              //       ?.setLocale(Locale.fromSubtags(languageCode: 'en')),
-              // ),
-              // TextButton(
-              //   child: Text("Set locale to English"),
-              //   onPressed: () => SpaceApp.of(context)
-              //       ?.setLocale(Locale.fromSubtags(languageCode: 'ru')),
-              // ),
-              Material(
-                child: Switch.adaptive(
-                  value: isEnglish,
-                  onChanged: (value) {
-                    SpaceApp.of(context)?.setLocale(isEnglish
-                        ? Locale.fromSubtags(languageCode: 'en')
-                        : Locale.fromSubtags(languageCode: 'ru'));
-                  },
-                ),
-              ),
-              Text(
                 'Explore the Universe',
                 style: GoogleFonts.ptSans(textStyle: theme.textTheme.bodyLarge),
               ),
