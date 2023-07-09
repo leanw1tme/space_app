@@ -19,3 +19,4 @@ Color BackPanel = HexColor('171717');
 Color GreyText = HexColor('353535');
 Color ArticleDes = HexColor('BBBBBB');
 Color ArticleDate = HexColor('787878');
+Color Blackground = HexColor('0E0E0E');

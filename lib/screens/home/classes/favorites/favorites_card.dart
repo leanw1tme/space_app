@@ -18,12 +18,11 @@ class FavoritesCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: <Widget>[
         FavoriteShape(),
-        // ImageShape(),
-        // imageFavorite(),
-        // FavoriteTitle(),
-        // backButton(),
-        // cardButton(context: context),
-        // FavoriteButton(context: context),
+        imageFavorite(),
+        FavoriteTitle(),
+        backButton(),
+        cardButton(context: context),
+        FavoriteButton(context: context),
       ],
     );
   }
@@ -40,94 +39,88 @@ class FavoritesCard extends StatelessWidget {
     );
   }
 
-  Widget ImageShape() {
-    return Positioned(
-      child: Container(
-        decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10))),
-            color: planets.cardColor),
-      ),
-    );
-  }
-
   Widget imageFavorite() {
     return Positioned(
+      width: 170.w,
+      height: 175.h,
       child: SizedBox(
-          width: 50, height: 50, child: SvgPicture.asset(planets.image)),
+          width: 50.w, height: 50.h, child: SvgPicture.asset(planets.image)),
     );
   }
 
   Widget FavoriteTitle() {
     return Positioned(
-      child: Container(
-          child: Stack(
+      width: 430.w,
+      height: 200.h,
+      child: Stack(
         children: [
           Positioned(
-            top: 20,
-            left: 10,
+            top: 35.h,
+            left: 150.w,
             child: Text(
               planets.name,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.black,
-                  fontSize: 15,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600),
             ),
           ),
           Positioned(
-            top: 45,
-            left: 0,
-            right: 80,
+            top: 65.h,
+            left: 150.w,
+            right: 80.w,
             child: Text(
               planets.description,
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 10,
+                fontSize: 11.sp,
               ),
               textAlign: TextAlign.justify,
             ),
           ),
           Positioned(
-            top: 110,
-            left: 9,
-            right: 70,
+            top: 125.h,
+            left: 150.w,
+            right: 70.w,
             child: Text(planets.name,
                 style: TextStyle(
                   color: Colors.black54,
-                  fontSize: 10,
+                  fontSize: 11.sp,
                 )),
           ),
         ],
-      )),
+      ),
     );
   }
 
   Widget cardButton({required BuildContext context}) {
     return Positioned(
+        top: 136.5.h,
+        left: 336.5.w,
         child: SizedBox(
-      width: 50,
-      height: 50,
-      child: CircleAvatar(
-          backgroundColor: planets.buttonColor,
-          foregroundColor: Colors.white,
-          child: IconButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ModelPage(planets),
-                  )),
-              icon: Icon(Icons.arrow_forward))),
-    ));
+          width: 42.w,
+          height: 42.h,
+          child: CircleAvatar(
+              backgroundColor: planets.buttonColor,
+              foregroundColor: Colors.white,
+              child: IconButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ModelPage(planets),
+                      )),
+                  icon: const Icon(Icons.arrow_forward))),
+        ));
   }
 
   Widget backButton() {
     return Positioned(
-        child: const SizedBox(
-            width: 50,
-            height: 50,
-            child: CircleAvatar(
+        top: 135.h,
+        left: 335.w,
+        child: SizedBox(
+            width: 45.w,
+            height: 45.h,
+            child: const CircleAvatar(
               backgroundColor: Colors.white,
             )));
   }
@@ -135,7 +128,8 @@ class FavoritesCard extends StatelessWidget {
   Widget FavoriteButton({required BuildContext context}) {
     final provider = Provider.of<FavoriteProvider>(context);
     return Positioned(
-        right: 25,
+        top: 15.h,
+        right: 20.w,
         child: IconButton(
             onPressed: () {
               provider.toggleFavorite(planets);

@@ -16,10 +16,16 @@ class ModelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<FavoriteProvider>(context);
     return Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Blackground,
         body: Stack(clipBehavior: Clip.none, children: <Widget>[
-          Positioned(
-              top: 0, child: SvgPicture.asset('assets/img/backModel.svg')),
+          Center(
+            child: SvgPicture.asset(
+              'assets/img/backModel.svg',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 50.h, left: 20.w),
             child: SizedBox(

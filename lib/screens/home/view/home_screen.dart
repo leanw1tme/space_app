@@ -36,12 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedCategories.contains(model.category);
     }).toList();
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Blackground,
       body: Stack(
         clipBehavior: Clip.none,
         children: <Widget>[
-          Positioned(
-              top: 0.h, child: SvgPicture.asset('assets/img/backHome.svg')),
+          Center(
+            child: SvgPicture.asset(
+              'assets/img/backHome.svg',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 55.h),
               child: Search()),
@@ -109,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.only(top: 180.h),
             child: PageView.builder(
-              controller: PageController(viewportFraction: 0.57.w),
+              controller: PageController(viewportFraction: 0.53),
               itemCount: filterModels.length,
               itemBuilder: (context, index) {
                 final model = filterModels[index];

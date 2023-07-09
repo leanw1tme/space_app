@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:space_app/screens/home/classes/favorites/favorites_card.dart';
+import 'package:space_app/theme/colors.dart';
 import '../classes/favorites/favorite_provider.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -16,24 +17,31 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Blackground,
         body: Stack(clipBehavior: Clip.none, children: <Widget>[
-      Positioned(
-          top: 0.h, child: SvgPicture.asset('assets/img/backFavorites.svg')),
-      Padding(
-        padding: EdgeInsets.only(top: 60.h, left: 20.w),
-        child: Text(
-          'Favorites',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600),
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.only(top: 100.h),
-        child: FavoritesPager(),
-      )
-    ]));
+          Center(
+            child: SvgPicture.asset(
+              'assets/img/backFavorites.svg',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 60.h, left: 20.w),
+            child: Text(
+              'Favorites',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 100.h),
+            child: FavoritesPager(),
+          )
+        ]));
   }
 
   Widget FavoritesPager() {
