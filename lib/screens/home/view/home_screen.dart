@@ -6,6 +6,7 @@ import 'package:space_app/screens/home/classes/articles/article_card.dart';
 import 'package:space_app/screens/home/classes/articles/article_list.dart';
 import 'package:space_app/screens/home/classes/models/planet_card.dart';
 import 'package:space_app/theme/colors.dart';
+import 'package:space_app/theme/l10n/app_localization.dart';
 
 import '../../../theme/theme_app.dart';
 import '../classes/models/planets_list.dart';
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 537.h,
               left: 25.w,
               child: Text(
-                'Articles',
+                AppLocalization.of(context).getTranslatedValue("Articles")!,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.sp,

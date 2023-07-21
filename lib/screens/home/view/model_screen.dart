@@ -37,7 +37,7 @@ class ModelPage extends StatelessWidget {
                   backgroundColor: Colors.black87,
                   child: IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_back,
                         color: Colors.white,
                       )),

@@ -5,6 +5,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:space_app/screens/home/view/model_screen.dart';
 import 'package:space_app/theme/colors.dart';
+import 'package:space_app/theme/l10n/app_localization.dart';
 
 import 'data.dart';
 
@@ -42,7 +43,7 @@ class _SearchState extends State<Search> {
         textFieldConfiguration: TextFieldConfiguration(
           controller: _typeAheadController,
           decoration: InputDecoration(
-            hintText: 'Search for planets and stars',
+            hintText: AppLocalization.of(context).getTranslatedValue("Search"),
             hintStyle: GoogleFonts.ptSans(
               textStyle: TextStyle(
                   color: LightGrey,
